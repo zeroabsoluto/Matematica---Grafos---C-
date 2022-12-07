@@ -1,0 +1,1879 @@
+#include <iostream>
+using namespace std;
+
+struct EstruturaDoVerticeDoGrafo
+{
+	int VerticeI = 0;
+	int VerticeII = 0;
+	int VerticeIII = 0;
+	int VerticeIV = 0;
+	int VerticeV = 0;
+	int GrauDesseVertice = 0;
+};
+
+struct EstruturaDoVerticeDoGrafoDirigido
+{
+	int VerticeDirigidoI = 0;
+	int VerticeDirigidoII = 0;
+	int VerticeDirigidoIII = 0;
+	int VerticeDirigidoIV = 0;
+	int VerticeDirigidoV = 0;
+	int GrauDesseVertice = 0;
+};
+
+class Grafos
+{
+	private:
+
+	EstruturaDoVerticeDoGrafo VerticeI, VerticeII, VerticeIII, VerticeIV, VerticeV;
+	EstruturaDoVerticeDoGrafoDirigido VerticeDirigidoI, VerticeDirigidoII, VerticeDirigidoIII, VerticeDirigidoIV, VerticeDirigidoV;
+	int SeEhPonderado = 0, Opcao = 0, PesoDessaAresta = 0, CalculoDoCaminhoDeEuler = 0;
+	float GrauTotal = 0, SomaDosVerticesParaGrauMedio = 0, GrauMinimo = 0, GrauMedio = 0, GrauMaximo = 0;
+
+	public:
+
+	Grafos()
+	{
+	}
+
+	void metodoCriacaoDoGrafo()
+	{
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°CONSTRUCAO DO GRAFO°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	    cout << "Esse Grafo eh podenrado?...\n\n";
+        cout << "1 - Nao\n";
+        cout << "2 - Sim\n\n";
+        cout << "Sua escolha eh... ";
+        cin >> SeEhPonderado;
+        cout << "\n";
+		
+		if (SeEhPonderado == 1)
+        {
+
+			cout << "O Vertice I se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{	
+				VerticeI.VerticeI = 1;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeI.VerticeII = 1;
+				VerticeII.VerticeI = 1;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeI.VerticeIII = 1;
+				VerticeIII.VerticeI = 1;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeI.VerticeIV = 1;
+				VerticeIV.VerticeI = 1;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeI.VerticeV = 1;
+				VerticeV.VerticeI = 1;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeII.VerticeII = 1;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeII.VerticeIII = 1;
+				VerticeIII.VerticeII = 1;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeII.VerticeIV = 1;
+				VerticeIV.VerticeII = 1;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeII.VerticeV = 1;
+				VerticeV.VerticeII = 1;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeIII.VerticeIII = 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeIII.VerticeIV = 1;
+				VerticeIV.VerticeIII = 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeIII.VerticeV = 1;
+				VerticeV.VerticeIII = 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{	
+				VerticeIV.VerticeIV = 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeIV.VerticeV = 1;
+				VerticeV.VerticeIV = 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{	
+				VerticeV.VerticeV = 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}	
+		}
+
+		if (SeEhPonderado == 2)
+        {
+
+			cout << "O Vertice I se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeI.VerticeI = PesoDessaAresta;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeI.VerticeII = PesoDessaAresta;
+				VerticeII.VerticeI = PesoDessaAresta;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeI.VerticeIII = PesoDessaAresta;
+				VerticeIII.VerticeI = PesoDessaAresta;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeI.VerticeIV = PesoDessaAresta;
+				VerticeIV.VerticeI = PesoDessaAresta;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeI.VerticeV = PesoDessaAresta;
+				VerticeV.VerticeI = PesoDessaAresta;
+				VerticeI.GrauDesseVertice = VerticeI.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeII.VerticeII = PesoDessaAresta;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeII.VerticeIII = PesoDessaAresta;
+				VerticeIII.VerticeII = PesoDessaAresta;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeII.VerticeIV = PesoDessaAresta;
+				VerticeIV.VerticeII = PesoDessaAresta;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeII.VerticeV = PesoDessaAresta;
+				VerticeV.VerticeII = PesoDessaAresta;
+				VerticeII.GrauDesseVertice = VerticeII.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeIII.VerticeIII = PesoDessaAresta;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeIII.VerticeIV = PesoDessaAresta;
+				VerticeIV.VerticeIII = PesoDessaAresta;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeIII.VerticeV = PesoDessaAresta;
+				VerticeV.VerticeIII = PesoDessaAresta;
+				VerticeIII.GrauDesseVertice = VerticeIII.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeIV.VerticeIV = PesoDessaAresta;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeIV.VerticeV = PesoDessaAresta;
+				VerticeV.VerticeIV = PesoDessaAresta;
+				VerticeIV.GrauDesseVertice = VerticeIV.GrauDesseVertice + 1;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeV.VerticeV = PesoDessaAresta;
+				VerticeV.GrauDesseVertice = VerticeV.GrauDesseVertice + 1;
+			}
+		}
+			cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	}
+	
+	void metodoImpressaoDoGrafo()
+	{
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°LEITURA DO GRAFO°°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+
+		if (VerticeI.VerticeI != 0)
+				if (VerticeI.VerticeI == 1)
+						cout << "O Vertice I tem Aresta com o Vertice I\n";
+				else
+						cout << "O Vertice I tem Aresta com o Vertice I com peso " << VerticeI.VerticeI <<"\n";
+
+		if (VerticeI.VerticeII != 0)
+				if (VerticeI.VerticeII == 1)
+						cout << "O Vertice I tem Aresta com o Vertice II\n";
+				else
+						cout << "O Vertice I tem Aresta com o Vertice II com peso " << VerticeI.VerticeII <<"\n";
+
+		if (VerticeI.VerticeIII != 0)
+				if (VerticeI.VerticeIII == 1)
+						cout << "O Vertice I tem Aresta com o Vertice III\n";
+				else
+						cout << "O Vertice I tem Aresta com o Vertice III com peso " << VerticeI.VerticeIII <<"\n";
+
+		if (VerticeI.VerticeIV != 0)
+				if (VerticeI.VerticeIV == 1)
+						cout << "O Vertice I tem Aresta com o Vertice IV\n";
+				else
+						cout << "O Vertice I tem Aresta com o Vertice IV com peso " << VerticeI.VerticeIV <<"\n";
+					
+		if (VerticeI.VerticeV != 0)
+				if (VerticeI.VerticeV == 1)
+						cout << "O Vertice I tem Aresta com o Vertice V\n";
+				else
+						cout << "O Vertice I tem Aresta com o Vertice V com peso " << VerticeI.VerticeV <<"\n";
+							
+		cout << "O Grau do Vertice I eh " << VerticeI.GrauDesseVertice << "\n\n";			
+
+		if (VerticeII.VerticeII != 0)
+				if (VerticeII.VerticeII == 1)
+						cout << "O Vertice II tem Aresta com o Vertice II\n";
+				else
+						cout << "O Vertice II tem Aresta com o Vertice II com peso " << VerticeII.VerticeII <<"\n";
+
+		if (VerticeII.VerticeIII != 0)
+				if (VerticeII.VerticeIII == 1)
+						cout << "O Vertice II tem Aresta com o Vertice III\n";
+				else
+						cout << "O Vertice II tem Aresta com o Vertice III com peso " << VerticeII.VerticeIII <<"\n";
+
+		if (VerticeII.VerticeIV != 0)
+				if (VerticeII.VerticeIV == 1)
+						cout << "O Vertice II tem Aresta com o Vertice IV\n";
+				else
+						cout << "O Vertice II tem Aresta com o Vertice IV com peso " << VerticeII.VerticeIV <<"\n";
+					
+		if (VerticeII.VerticeV != 0)
+				if (VerticeII.VerticeV == 1)
+						cout << "O Vertice II tem Aresta com o Vertice V\n";
+				else
+						cout << "O Vertice II tem Aresta com o Vertice V com peso " << VerticeII.VerticeV <<"\n";
+							
+		cout << "O Grau do Vertice II eh " << VerticeII.GrauDesseVertice << "\n\n";
+
+		if (VerticeIII.VerticeIII != 0)
+				if (VerticeIII.VerticeIII == 1)
+						cout << "O Vertice III tem Aresta com o Vertice III\n";
+				else
+						cout << "O Vertice III tem Aresta com o Vertice III com peso " << VerticeIII.VerticeIII <<"\n";
+
+		if (VerticeIII.VerticeIV != 0)
+				if (VerticeIII.VerticeIV == 1)
+						cout << "O Vertice III tem Aresta com o Vertice IV\n";
+				else
+						cout << "O Vertice III tem Aresta com o Vertice IV com peso " << VerticeIII.VerticeIV <<"\n";
+					
+		if (VerticeIII.VerticeV != 0)
+				if (VerticeIII.VerticeV == 1)
+						cout << "O Vertice III tem Aresta com o Vertice V\n";
+				else
+						cout << "O Vertice III tem Aresta com o Vertice V com peso " << VerticeIII.VerticeV <<"\n";
+
+		cout << "O Grau do Vertice III eh " << VerticeIII.GrauDesseVertice << "\n\n";
+
+		if (VerticeIV.VerticeIV != 0)
+				if (VerticeIV.VerticeIV == 1)
+						cout << "O Vertice IV tem Aresta com o Vertice IV\n";
+				else
+						cout << "O Vertice IV tem Aresta com o Vertice IV com peso " << VerticeIV.VerticeIV <<"\n";
+					
+		if (VerticeIV.VerticeV != 0)
+				if (VerticeIV.VerticeV == 1)
+						cout << "O Vertice IV tem Aresta com o Vertice V\n";
+				else
+						cout << "O Vertice IV tem Aresta com o Vertice V com peso " << VerticeIV.VerticeV <<"\n";
+
+		cout << "O Grau do Vertice IV eh " << VerticeIV.GrauDesseVertice << "\n\n";			
+
+		if (VerticeV.VerticeV != 0)
+				if (VerticeV.VerticeV == 1)
+						cout << "O Vertice V tem Aresta com o Vertice V\n";
+				else
+						cout << "O Vertice V tem Aresta com o Vertice V com peso " << VerticeV.VerticeV <<"\n";
+
+		cout << "O Grau do Vertice V eh " << VerticeV.GrauDesseVertice << "\n\n";
+
+
+		GrauMinimo = VerticeI.GrauDesseVertice;
+
+		if (VerticeII.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeII.GrauDesseVertice;
+
+		if (VerticeIII.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeIII.GrauDesseVertice;
+
+		if (VerticeIV.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeIV.GrauDesseVertice;
+
+		if (VerticeV.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeV.GrauDesseVertice;
+
+		cout << "O Grau minimo desse Grafo eh " << GrauMinimo << "\n\n";
+
+
+		if (VerticeI.VerticeI != 0 || VerticeI.VerticeII != 0 || VerticeI.VerticeIII != 0 || VerticeI.VerticeIV != 0 || VerticeI.VerticeV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeII.VerticeII != 0 || VerticeII.VerticeIII != 0 || VerticeII.VerticeIV != 0 || VerticeII.VerticeV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeIII.VerticeIII != 0 || VerticeIII.VerticeIV != 0 || VerticeIII.VerticeV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeIV.VerticeIV != 0 || VerticeIV.VerticeV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeV.VerticeV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+
+		GrauTotal = VerticeI.GrauDesseVertice + VerticeII.GrauDesseVertice + VerticeIII.GrauDesseVertice + VerticeIV.GrauDesseVertice + VerticeV.GrauDesseVertice;
+
+		GrauMedio = GrauTotal / SomaDosVerticesParaGrauMedio;
+
+		cout << "O Grau medio desse Grafo eh " << GrauMedio << "\n\n";
+
+
+		GrauMaximo = VerticeI.GrauDesseVertice;
+
+		if (VerticeII.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeII.GrauDesseVertice;
+
+		if (VerticeIII.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeIII.GrauDesseVertice;
+
+		if (VerticeIV.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeIV.GrauDesseVertice;
+
+		if (VerticeV.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeV.GrauDesseVertice;
+
+		cout << "O Grau maximo desse Grafo eh " << GrauMaximo << "\n\n";
+
+
+		cout << "O Grau total desse Grafo eh " << GrauTotal << "\n\n";
+
+		if (VerticeI.GrauDesseVertice != 0)
+			if (VerticeI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeII.GrauDesseVertice != 0)
+			if (VerticeI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeIII.GrauDesseVertice != 0)
+			if (VerticeI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeIV.GrauDesseVertice != 0)
+			if (VerticeI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeV.GrauDesseVertice != 0)
+			if (VerticeI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (CalculoDoCaminhoDeEuler == 0 || CalculoDoCaminhoDeEuler == 2)
+			cout << "Esse Grafo possue o Caminho De Euler\n\n";
+		else
+			cout << "Esse Grafo nao possue o Caminho De Euler\n\n";
+
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	}
+
+	~Grafos()
+	{
+	}
+};
+
+class GrafosDirigidos
+{
+	private:
+
+	EstruturaDoVerticeDoGrafoDirigido VerticeDirigidoI, VerticeDirigidoII, VerticeDirigidoIII, VerticeDirigidoIV, VerticeDirigidoV;
+	int SeEhPonderado = 0, Opcao = 0, PesoDessaAresta = 0, CalculoDoCaminhoDeEuler = 0;
+	float GrauTotal = 0, SomaDosVerticesParaGrauMedio = 0, GrauMinimo = 0, GrauMedio = 0, GrauMaximo = 0;
+
+	public:
+
+	GrafosDirigidos()
+	{
+	}
+	
+	void metodoCriacaoDoGrafoDirigido()
+	{
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°CONSTRUCAO DO DIGRAFO°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	    cout << "Esse DiGrafo eh podenrado?...\n\n";
+        cout << "1 - Nao\n";
+        cout << "2 - Sim\n\n";
+        cout << "Sua escolha eh... ";
+        cin >> SeEhPonderado;
+        cout << "\n";
+
+		if (SeEhPonderado == 1)
+        {
+
+			cout << "O Vertice I se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoI.VerticeDirigidoI = 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoI.VerticeDirigidoII = 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoI.VerticeDirigidoIII = 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoI.VerticeDirigidoIV = 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoI.VerticeDirigidoV = 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+				cout << "O Vertice II se conecta ah o Vertice I?...\n\n";
+				cout << "1 - Nao\n";
+				cout << "2 - Sim\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> Opcao;
+        		cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoII.VerticeDirigidoI = 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoII.VerticeDirigidoII = 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoII.VerticeDirigidoIII = 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoII.VerticeDirigidoIV = 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoII.VerticeDirigidoV = 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIII.VerticeDirigidoI = 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIII.VerticeDirigidoII = 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIII.VerticeDirigidoIII = 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIII.VerticeDirigidoIV = 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIII.VerticeDirigidoV = 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIV.VerticeDirigidoI = 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIV.VerticeDirigidoII = 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIV.VerticeDirigidoIII = 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIV.VerticeDirigidoIV = 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoIV.VerticeDirigidoV = 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoV.VerticeDirigidoI = 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoV.VerticeDirigidoII = 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoV.VerticeDirigidoIII = 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoV.VerticeDirigidoIV = 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				VerticeDirigidoV.VerticeDirigidoV = 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+		}
+			cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+
+
+		if (SeEhPonderado == 2)
+        {
+
+			cout << "O Vertice I se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoI.VerticeDirigidoI = PesoDessaAresta;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoI.VerticeDirigidoII = PesoDessaAresta;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoI.VerticeDirigidoIII = PesoDessaAresta;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoI.VerticeDirigidoIV = PesoDessaAresta;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice I se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoI.VerticeDirigidoV = PesoDessaAresta;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+				cout << "O Vertice II se conecta ah o Vertice I?...\n\n";
+				cout << "1 - Nao\n";
+				cout << "2 - Sim\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> Opcao;
+        		cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoII.VerticeDirigidoI = PesoDessaAresta;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoII.VerticeDirigidoII = PesoDessaAresta;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoII.VerticeDirigidoIII = PesoDessaAresta;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoII.VerticeDirigidoIV = PesoDessaAresta;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice II se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoII.VerticeDirigidoV = PesoDessaAresta;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIII.VerticeDirigidoI = PesoDessaAresta;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIII.VerticeDirigidoII = PesoDessaAresta;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIII.VerticeDirigidoIII = PesoDessaAresta;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIII.VerticeDirigidoIV = PesoDessaAresta;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice III se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIII.VerticeDirigidoV = PesoDessaAresta;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIV.VerticeDirigidoI = PesoDessaAresta;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIV.VerticeDirigidoII = PesoDessaAresta;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIV.VerticeDirigidoIII = PesoDessaAresta;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIV.VerticeDirigidoIV = PesoDessaAresta;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice IV se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoIV.VerticeDirigidoV = PesoDessaAresta;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice I?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoV.VerticeDirigidoI = PesoDessaAresta;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoI.GrauDesseVertice = VerticeDirigidoI.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice II?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoV.VerticeDirigidoII = PesoDessaAresta;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoII.GrauDesseVertice = VerticeDirigidoII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice III?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoV.VerticeDirigidoIII = PesoDessaAresta;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoIII.GrauDesseVertice = VerticeDirigidoIII.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice IV?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoV.VerticeDirigidoIV = PesoDessaAresta;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+				VerticeDirigidoIV.GrauDesseVertice = VerticeDirigidoIV.GrauDesseVertice + 1;
+			}
+
+			cout << "O Vertice V se conecta ah o Vertice V?...\n\n";
+			cout << "1 - Nao\n";
+			cout << "2 - Sim\n\n";
+			cout << "Sua escolha eh... ";
+			cin >> Opcao;
+        	cout << "\n";
+
+			if (Opcao == 2)
+			{
+				cout << "Digite o peso dessa Aresta...\n\n";
+				cout << "Sua escolha eh... ";
+				cin >> PesoDessaAresta;
+				cout << "\n";
+				VerticeDirigidoV.VerticeDirigidoV = PesoDessaAresta;
+				VerticeDirigidoV.GrauDesseVertice = VerticeDirigidoV.GrauDesseVertice + 1;
+			}
+		}
+			cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	}
+	
+	
+	void metodoImpressaoDoGrafoDirigido()
+	{
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°LEITURA DO DIGRAFO°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+
+		if (VerticeDirigidoI.VerticeDirigidoI != 0)
+				if (VerticeDirigidoI.VerticeDirigidoI == 1)
+						cout << "|Vertice I| ----------> |Vertice I|\n";
+				else
+						cout << "|Vertice I| ----------> |Vertice I| - |Peso " << VerticeDirigidoI.VerticeDirigidoI <<"|\n";
+
+		if (VerticeDirigidoI.VerticeDirigidoII != 0)
+				if (VerticeDirigidoI.VerticeDirigidoII == 1)
+						cout << "|Vertice I| ----------> |Vertice II|\n";
+				else
+						cout << "|Vertice I| ----------> |Vertice II| - |Peso " << VerticeDirigidoI.VerticeDirigidoII <<"|\n";
+
+		if (VerticeDirigidoI.VerticeDirigidoIII != 0)
+				if (VerticeDirigidoI.VerticeDirigidoIII == 1)
+						cout << "|Vertice I| ----------> |Vertice III|\n";
+				else
+						cout << "|Vertice I| ----------> |Vertice III| - |Peso " << VerticeDirigidoI.VerticeDirigidoIII <<"|\n";
+
+		if (VerticeDirigidoI.VerticeDirigidoIV != 0)
+				if (VerticeDirigidoI.VerticeDirigidoIV == 1)
+						cout << "|Vertice I| ----------> |Vertice IV|\n";
+				else
+						cout << "|Vertice I| ----------> |Vertice IV| - |Peso " << VerticeDirigidoI.VerticeDirigidoIV <<"|\n";
+					
+		if (VerticeDirigidoI.VerticeDirigidoV != 0)
+				if (VerticeDirigidoI.VerticeDirigidoV == 1)
+						cout << "|Vertice I| ----------> |Vertice V|\n";
+				else
+						cout << "|Vertice I| ----------> |Vertice V| - |Peso " << VerticeDirigidoI.VerticeDirigidoV <<"|\n";
+							
+		cout << "O Grau do Vertice I eh " << VerticeDirigidoI.GrauDesseVertice << "\n\n";			
+
+		if (VerticeDirigidoII.VerticeDirigidoI != 0)
+				if (VerticeDirigidoII.VerticeDirigidoI == 1)
+						cout << "|Vertice II| ----------> |Vertice I|\n";
+				else
+						cout << "|Vertice II| ----------> |Vertice I| - |Peso " << VerticeDirigidoII.VerticeDirigidoI <<"|\n";
+
+		if (VerticeDirigidoII.VerticeDirigidoII != 0)
+				if (VerticeDirigidoII.VerticeDirigidoII == 1)
+						cout << "|Vertice II| ----------> |Vertice II|\n";
+				else
+						cout << "|Vertice II| ----------> |Vertice II| - |Peso " << VerticeDirigidoII.VerticeDirigidoII <<"|\n";
+
+		if (VerticeDirigidoII.VerticeDirigidoIII != 0)
+				if (VerticeDirigidoII.VerticeDirigidoIII == 1)
+						cout << "|Vertice II| ----------> |Vertice III|\n";
+				else
+						cout << "|Vertice II| ----------> |Vertice III| - |Peso " << VerticeDirigidoII.VerticeDirigidoIII <<"|\n";
+
+		if (VerticeDirigidoII.VerticeDirigidoIV != 0)
+				if (VerticeDirigidoII.VerticeDirigidoIV == 1)
+						cout << "|Vertice II| ----------> |Vertice IV|\n";
+				else
+						cout << "|Vertice II| ----------> |Vertice IV| - |Peso " << VerticeDirigidoII.VerticeDirigidoIV <<"|\n";
+					
+		if (VerticeDirigidoII.VerticeDirigidoV != 0)
+				if (VerticeDirigidoII.VerticeDirigidoV == 1)
+						cout << "|Vertice II| ----------> |Vertice V|\n";
+				else
+						cout << "|Vertice II| ----------> |Vertice V| - |Peso " << VerticeDirigidoII.VerticeDirigidoV <<"|\n";
+							
+		cout << "O Grau do Vertice II eh " << VerticeDirigidoII.GrauDesseVertice << "\n\n";
+
+		if (VerticeDirigidoIII.VerticeDirigidoI != 0)
+				if (VerticeDirigidoIII.VerticeDirigidoI == 1)
+						cout << "|Vertice III| ----------> |Vertice I|\n";
+				else
+						cout << "|Vertice III| ----------> |Vertice I| - |Peso " << VerticeDirigidoIII.VerticeDirigidoI <<"|\n";
+
+		if (VerticeDirigidoIII.VerticeDirigidoII != 0)
+				if (VerticeDirigidoIII.VerticeDirigidoII == 1)
+						cout << "|Vertice III| ----------> |Vertice II|\n";
+				else
+						cout << "|Vertice III| ----------> |Vertice II| - |Peso " << VerticeDirigidoIII.VerticeDirigidoII <<"|\n";
+
+		if (VerticeDirigidoIII.VerticeDirigidoIII != 0)
+				if (VerticeDirigidoIII.VerticeDirigidoIII == 1)
+						cout << "|Vertice III| ----------> |Vertice III|\n";
+				else
+						cout << "|Vertice III| ----------> |Vertice III| - |Peso " << VerticeDirigidoIII.VerticeDirigidoIII <<"|\n";
+
+		if (VerticeDirigidoIII.VerticeDirigidoIV != 0)
+				if (VerticeDirigidoIII.VerticeDirigidoIV == 1)
+						cout << "|Vertice III| ----------> |Vertice IV|\n";
+				else
+						cout << "|Vertice III| ----------> |Vertice IV| - |Peso " << VerticeDirigidoIII.VerticeDirigidoIV <<"|\n";
+					
+		if (VerticeDirigidoIII.VerticeDirigidoV != 0)
+				if (VerticeDirigidoIII.VerticeDirigidoV == 1)
+						cout << "|Vertice III| ----------> |Vertice V|\n";
+				else
+						cout << "|Vertice III| ----------> |Vertice V| - |Peso " << VerticeDirigidoIII.VerticeDirigidoV <<"|\n";
+
+		cout << "O Grau do Vertice III eh " << VerticeDirigidoIII.GrauDesseVertice << "\n\n";
+
+		if (VerticeDirigidoIV.VerticeDirigidoI != 0)
+				if (VerticeDirigidoIV.VerticeDirigidoI == 1)
+						cout << "|Vertice IV| ----------> |Vertice I|\n";
+				else
+						cout << "|Vertice IV| ----------> |Vertice I| - |Peso " << VerticeDirigidoIV.VerticeDirigidoI <<"|\n";
+
+		if (VerticeDirigidoIV.VerticeDirigidoII != 0)
+				if (VerticeDirigidoIV.VerticeDirigidoII == 1)
+						cout << "|Vertice IV| ----------> |Vertice II|\n";
+				else
+						cout << "|Vertice IV| ----------> |Vertice II| - |Peso " << VerticeDirigidoIV.VerticeDirigidoII <<"|\n";
+
+		if (VerticeDirigidoIV.VerticeDirigidoIII != 0)
+				if (VerticeDirigidoIV.VerticeDirigidoIII == 1)
+						cout << "|Vertice IV| ----------> |Vertice III|\n";
+				else
+						cout << "|Vertice IV| ----------> |Vertice III| - |Peso " << VerticeDirigidoIV.VerticeDirigidoIII <<"|\n";
+
+		if (VerticeDirigidoIV.VerticeDirigidoIV != 0)
+				if (VerticeDirigidoIV.VerticeDirigidoIV == 1)
+						cout << "|Vertice IV| ----------> |Vertice IV|\n";
+				else
+						cout << "|Vertice IV| ----------> |Vertice IV| - |Peso " << VerticeDirigidoIV.VerticeDirigidoIV <<"|\n";
+					
+		if (VerticeDirigidoIV.VerticeDirigidoV != 0)
+				if (VerticeDirigidoIV.VerticeDirigidoV == 1)
+						cout << "|Vertice IV| ----------> |Vertice V|\n";
+				else
+						cout << "|Vertice IV| ----------> |Vertice V| - |Peso " << VerticeDirigidoIV.VerticeDirigidoV <<"|\n";
+
+		cout << "O Grau do Vertice IV eh " << VerticeDirigidoIV.GrauDesseVertice << "\n\n";			
+
+		if (VerticeDirigidoV.VerticeDirigidoI != 0)
+				if (VerticeDirigidoV.VerticeDirigidoI == 1)
+						cout << "|Vertice V| ----------> |Vertice I|\n";
+				else
+						cout << "|Vertice V| ----------> |Vertice I| - |Peso " << VerticeDirigidoV.VerticeDirigidoI <<"|\n";
+
+		if (VerticeDirigidoV.VerticeDirigidoII != 0)
+				if (VerticeDirigidoV.VerticeDirigidoII == 1)
+						cout << "|Vertice V| ----------> |Vertice II|\n";
+				else
+						cout << "|Vertice V| ----------> |Vertice II| - |Peso " << VerticeDirigidoV.VerticeDirigidoII <<"|\n";
+
+		if (VerticeDirigidoV.VerticeDirigidoIII != 0)
+				if (VerticeDirigidoV.VerticeDirigidoIII == 1)
+						cout << "|Vertice V| ----------> |Vertice III|\n";
+				else
+						cout << "|Vertice V| ----------> |Vertice III| - |Peso " << VerticeDirigidoV.VerticeDirigidoIII <<"|\n";
+
+		if (VerticeDirigidoV.VerticeDirigidoIV != 0)
+				if (VerticeDirigidoV.VerticeDirigidoIV == 1)
+						cout << "|Vertice V| ----------> |Vertice IV|\n";
+				else
+						cout << "|Vertice V| ----------> |Vertice IV| - |Peso " << VerticeDirigidoV.VerticeDirigidoIV <<"|\n";
+						
+		if (VerticeDirigidoV.VerticeDirigidoV != 0)
+				if (VerticeDirigidoV.VerticeDirigidoV == 1)
+						cout << "|Vertice V| ----------> |Vertice V|\n";
+				else
+						cout << "|Vertice V| ----------> |Vertice V| - |Peso " << VerticeDirigidoV.VerticeDirigidoV <<"|\n";
+
+		cout << "O Grau do Vertice V eh " << VerticeDirigidoV.GrauDesseVertice << "\n\n";
+		
+		GrauTotal = VerticeDirigidoI.GrauDesseVertice + VerticeDirigidoII.GrauDesseVertice + VerticeDirigidoIII.GrauDesseVertice + VerticeDirigidoIV.GrauDesseVertice + VerticeDirigidoV.GrauDesseVertice;
+
+
+		if (VerticeDirigidoI.VerticeDirigidoI != 0 || VerticeDirigidoI.VerticeDirigidoII != 0 || VerticeDirigidoI.VerticeDirigidoIII != 0 || VerticeDirigidoI.VerticeDirigidoIV != 0 || VerticeDirigidoI.VerticeDirigidoV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeDirigidoII.VerticeDirigidoII != 0 || VerticeDirigidoII.VerticeDirigidoIII != 0 || VerticeDirigidoII.VerticeDirigidoIV != 0 || VerticeDirigidoII.VerticeDirigidoV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeDirigidoIII.VerticeDirigidoIII != 0 || VerticeDirigidoIII.VerticeDirigidoIV != 0 || VerticeDirigidoIII.VerticeDirigidoV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeDirigidoIV.VerticeDirigidoIV != 0 || VerticeDirigidoIV.VerticeDirigidoV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+		if (VerticeDirigidoV.VerticeDirigidoV != 0)
+			SomaDosVerticesParaGrauMedio = SomaDosVerticesParaGrauMedio + 1;
+
+
+
+		GrauMinimo = VerticeDirigidoI.GrauDesseVertice;
+
+		if (VerticeDirigidoII.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeDirigidoII.GrauDesseVertice;
+
+		if (VerticeDirigidoIII.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeDirigidoIII.GrauDesseVertice;
+	
+		if (VerticeDirigidoIV.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeDirigidoIV.GrauDesseVertice;
+	
+		if (VerticeDirigidoV.GrauDesseVertice < GrauMinimo)
+			GrauMinimo = VerticeDirigidoV.GrauDesseVertice;
+
+		GrauMedio = GrauTotal / SomaDosVerticesParaGrauMedio;
+
+		cout << "O Grau minimo desse DiGrafo eh " << GrauMinimo << "\n\n";
+
+		cout << "O Grau medio desse DiGrafo eh " << GrauMedio << "\n\n";
+
+		GrauMaximo = VerticeDirigidoI.GrauDesseVertice;
+
+		if (VerticeDirigidoII.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeDirigidoII.GrauDesseVertice;
+
+		if (VerticeDirigidoIII.GrauDesseVertice > GrauMaximo)
+		GrauMaximo = VerticeDirigidoIII.GrauDesseVertice;
+
+		if (VerticeDirigidoIV.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeDirigidoIV.GrauDesseVertice;
+
+		if (VerticeDirigidoV.GrauDesseVertice > GrauMaximo)
+			GrauMaximo = VerticeDirigidoV.GrauDesseVertice;
+
+		cout << "O Grau maximo desse DiGrafo eh " << GrauMaximo << "\n\n";
+
+		cout << "O Grau total desse DiGrafo eh " << GrauTotal << "\n\n";
+
+		if (VerticeDirigidoI.GrauDesseVertice != 0)
+			if (VerticeDirigidoI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeDirigidoII.GrauDesseVertice != 0)
+			if (VerticeDirigidoI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeDirigidoIII.GrauDesseVertice != 0)
+			if (VerticeDirigidoI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeDirigidoIV.GrauDesseVertice != 0)
+			if (VerticeDirigidoI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (VerticeDirigidoV.GrauDesseVertice != 0)
+			if (VerticeDirigidoI.GrauDesseVertice % 2 != 0)
+				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
+
+		if (CalculoDoCaminhoDeEuler == 0 || CalculoDoCaminhoDeEuler == 2)
+			cout << "Esse DiGrafo possue o Caminho De Euler\n\n";
+		else
+			cout << "Esse DiGrafo nao possue o Caminho De Euler\n\n";
+
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	}
+	
+	~GrafosDirigidos()
+	{
+	}
+};
+
+int main (void)
+{
+	int Opcao = 0;
+	Grafos ClasseGrafos;
+	GrafosDirigidos ClasseGrafosDirigidos;
+
+	do
+	{
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°PROGRAMA DE CONSTRUIR GRAFOS°°°°°°°°°°°°°\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+		cout << "1 - Criar Grafo nao Dirigido\n";
+		cout << "2 - Criar Grafo Dirigido\n";
+		cout << "3 - Ver as propriedades do Grafo\n";
+		cout << "4 - Ver as propriedades do Grafo Dirigido\n";
+		cout << "5 - Limpar esse Terminal\n";
+		cout << "6 - Sair desse Programa\n\n";
+		cout << "Sua escolha eh... ";
+		cin >> Opcao;
+		cout << "\n";
+		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
+	
+		switch (Opcao)
+		{
+			case 1:
+				ClasseGrafos.metodoCriacaoDoGrafo();
+				break;
+			case 2:
+				ClasseGrafosDirigidos.metodoCriacaoDoGrafoDirigido();
+				break;	
+			case 3:
+				ClasseGrafos.metodoImpressaoDoGrafo();
+				break;
+			case 4:
+				ClasseGrafosDirigidos.metodoImpressaoDoGrafoDirigido();
+				break;
+			case 5:
+				system("cls");
+				break;
+		}
+	}
+	while (Opcao != 6);
+};
