@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 struct EstruturaDoVerticeDoGrafo
@@ -41,12 +42,12 @@ class Grafos
 		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n";
 		cout << "°°°°°°°°°°°°°°°°°°°CONSTRUCAO DO GRAFO°°°°°°°°°°°°°°°°°\n";
 		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
-	    cout << "Esse Grafo eh podenrado?...\n\n";
-        cout << "1 - Nao\n";
-        cout << "2 - Sim\n\n";
-        cout << "Sua escolha eh... ";
-        cin >> SeEhPonderado;
-        cout << "\n";
+	        cout << "Esse Grafo eh podenrado?...\n\n";
+        	cout << "1 - Nao\n";
+       		cout << "2 - Sim\n\n";
+       		cout << "Sua escolha eh... ";
+        	cin >> SeEhPonderado;
+        	cout << "\n";
 
 		if (SeEhPonderado == 1)
         {
@@ -1613,7 +1614,9 @@ class GrafosDirigidos
 				else
 						cout << "|Vertice I| ----------> |Vertice V| - |Peso " << VerticeDirigidoI.VerticeDirigidoV <<"|\n";
 
-		cout << "O Grau do Vertice I eh " << VerticeDirigidoI.GrauDesseVertice << "\n\n";
+        cout << "-------------------------------------------------------\n";
+		cout << "O Grau do Vertice I eh " << VerticeDirigidoI.GrauDesseVertice << "\n";
+		cout << "-------------------------------------------------------\n\n";
 
 		if (VerticeDirigidoII.VerticeDirigidoI != 0)
 				if (VerticeDirigidoII.VerticeDirigidoI == 1)
@@ -1645,7 +1648,9 @@ class GrafosDirigidos
 				else
 						cout << "|Vertice II| ----------> |Vertice V| - |Peso " << VerticeDirigidoII.VerticeDirigidoV <<"|\n";
 
-		cout << "O Grau do Vertice II eh " << VerticeDirigidoII.GrauDesseVertice << "\n\n";
+        cout << "-------------------------------------------------------\n";
+		cout << "O Grau do Vertice II eh " << VerticeDirigidoII.GrauDesseVertice << "\n";
+		cout << "-------------------------------------------------------\n\n";
 
 		if (VerticeDirigidoIII.VerticeDirigidoI != 0)
 				if (VerticeDirigidoIII.VerticeDirigidoI == 1)
@@ -1677,7 +1682,9 @@ class GrafosDirigidos
 				else
 						cout << "|Vertice III| ----------> |Vertice V| - |Peso " << VerticeDirigidoIII.VerticeDirigidoV <<"|\n";
 
-		cout << "O Grau do Vertice III eh " << VerticeDirigidoIII.GrauDesseVertice << "\n\n";
+        cout << "-------------------------------------------------------\n";
+		cout << "O Grau do Vertice III eh " << VerticeDirigidoIII.GrauDesseVertice << "\n";
+		cout << "-------------------------------------------------------\n\n";
 
 		if (VerticeDirigidoIV.VerticeDirigidoI != 0)
 				if (VerticeDirigidoIV.VerticeDirigidoI == 1)
@@ -1709,7 +1716,9 @@ class GrafosDirigidos
 				else
 						cout << "|Vertice IV| ----------> |Vertice V| - |Peso " << VerticeDirigidoIV.VerticeDirigidoV <<"|\n";
 
-		cout << "O Grau do Vertice IV eh " << VerticeDirigidoIV.GrauDesseVertice << "\n\n";
+        cout << "-------------------------------------------------------\n";
+		cout << "O Grau do Vertice IV eh " << VerticeDirigidoIV.GrauDesseVertice << "\n";
+		cout << "-------------------------------------------------------\n\n";
 
 		if (VerticeDirigidoV.VerticeDirigidoI != 0)
 				if (VerticeDirigidoV.VerticeDirigidoI == 1)
@@ -1741,7 +1750,9 @@ class GrafosDirigidos
 				else
 						cout << "|Vertice V| ----------> |Vertice V| - |Peso " << VerticeDirigidoV.VerticeDirigidoV <<"|\n";
 
+        cout << "-------------------------------------------------------\n";
 		cout << "O Grau do Vertice V eh " << VerticeDirigidoV.GrauDesseVertice << "\n\n";
+		cout << "-------------------------------------------------------\n\n";
 
 		GrauTotal = VerticeDirigidoI.GrauDesseVertice + VerticeDirigidoII.GrauDesseVertice + VerticeDirigidoIII.GrauDesseVertice + VerticeDirigidoIV.GrauDesseVertice + VerticeDirigidoV.GrauDesseVertice;
 
@@ -1779,9 +1790,11 @@ class GrafosDirigidos
 
 		GrauMedio = GrauTotal / SomaDosVerticesParaGrauMedio;
 
-		cout << "O Grau minimo desse DiGrafo eh " << GrauMinimo << "\n\n";
+		cout << "O Grau minimo desse DiGrafo eh " << GrauMinimo << "\n";
+		cout << "-------------------------------------------------------\n";
 
-		cout << "O Grau medio desse DiGrafo eh " << GrauMedio << "\n\n";
+		cout << "O Grau medio desse DiGrafo eh " << GrauMedio << "\n";
+		cout << "-------------------------------------------------------\n";
 
 		GrauMaximo = VerticeDirigidoI.GrauDesseVertice;
 
@@ -1797,9 +1810,11 @@ class GrafosDirigidos
 		if (VerticeDirigidoV.GrauDesseVertice > GrauMaximo)
 			GrauMaximo = VerticeDirigidoV.GrauDesseVertice;
 
-		cout << "O Grau maximo desse DiGrafo eh " << GrauMaximo << "\n\n";
+		cout << "O Grau maximo desse DiGrafo eh " << GrauMaximo << "\n";
+		cout << "-------------------------------------------------------\n";
 
-		cout << "O Grau total desse DiGrafo eh " << GrauTotal << "\n\n";
+		cout << "O Grau total desse DiGrafo eh " << GrauTotal << "\n";
+		cout << "-------------------------------------------------------\n";
 
 		if (VerticeDirigidoI.GrauDesseVertice != 0)
 			if (VerticeDirigidoI.GrauDesseVertice % 2 != 0)
@@ -1822,9 +1837,9 @@ class GrafosDirigidos
 				CalculoDoCaminhoDeEuler = CalculoDoCaminhoDeEuler + 1;
 
 		if (CalculoDoCaminhoDeEuler == 0 || CalculoDoCaminhoDeEuler == 2)
-			cout << "Esse DiGrafo possue o Caminho De Euler\n\n";
+			cout << "Esse DiGrafo possui o Caminho De Euler\n\n";
 		else
-			cout << "Esse DiGrafo nao possue o Caminho De Euler\n\n";
+			cout << "Esse DiGrafo nao possui o Caminho De Euler\n\n";
 
 		cout << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\n\n";
 	}
@@ -1836,7 +1851,7 @@ class GrafosDirigidos
 
 int main (void)
 {
-	int Opcao = 0;
+	char Opcao;
 	Grafos ClasseGrafos;
 	GrafosDirigidos ClasseGrafosDirigidos;
 
@@ -1858,19 +1873,19 @@ int main (void)
 
 		switch (Opcao)
 		{
-			case 1:
+			case '1':
 				ClasseGrafos.metodoCriacaoDoGrafo();
 				break;
-			case 2:
+			case '2':
 				ClasseGrafosDirigidos.metodoCriacaoDoGrafoDirigido();
 				break;
-			case 3:
+			case '3':
 				ClasseGrafos.metodoImpressaoDoGrafo();
 				break;
-			case 4:
+			case '4':
 				ClasseGrafosDirigidos.metodoImpressaoDoGrafoDirigido();
 				break;
-			case 5:
+			case '5':
 				system("cls");
 				break;
 		}
@@ -1879,5 +1894,5 @@ int main (void)
 					cout << "Voce digitou uma opcao invalita\n\n";
 				}
 	}
-	while (Opcao != 6);
+	while (Opcao != '6');
 };
